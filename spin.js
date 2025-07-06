@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  
   let scene, camera, renderer, cube;
   let rotX = 0, rotY = 0;
   const faceLabels = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -75,15 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  startBtn.addEventListener('click', () => {
-    intro.style.display = 'none';
-    gameInfo.style.display = 'block';
-
-    init();               // inisialisasi scene dan cube
-    generateQuestion();   // tampilkan soal
-    startTimer();         // mulai timer
-  });
-  
   function startTimer() {
     tickSound.currentTime = 0;
     tickSound.play();
@@ -102,8 +94,13 @@ document.addEventListener("DOMContentLoaded", () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // Mulai game
-  init();
-  generateQuestion();
-  startTimer();
+  startBtn.addEventListener('click', () => {
+    intro.style.display = 'none';
+    gameInfo.style.display = 'block';
+
+    init();               // inisialisasi scene dan cube
+    generateQuestion();   // tampilkan soal
+    startTimer();         // mulai timer
+  });
+
 });
