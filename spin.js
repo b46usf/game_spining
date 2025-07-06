@@ -44,9 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Draw circular label in center
-
     ctx.beginPath();
-    ctx.arc(canvas.width / 2, canvas.height / 2, 40, 0, Math.PI * 2);
+    ctx.arc(canvas.width / 2, canvas.height / 2, 20, 0, Math.PI * 2);
     ctx.strokeStyle = '#000';
     ctx.lineWidth = 2;
     ctx.stroke();
@@ -120,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (level === 2) {
       questionElement.textContent = 'Jumlahkan kembali nilai angka tiap sisi kubus!';
     } else {
-      questionElement.textContent = 'Kalikan kembali nilai angka tiap sisi kubus!';
+      questionElement.textContent = 'Jumlahkan kembali nilai angka tiap sisi kubus!';
     }
   }
 
