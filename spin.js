@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
+
   let scene, camera, renderer, cube;
   let rotX = 0, rotY = 0;
   const faceLabels = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
     renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    document.getElementById('game-container').appendChild(renderer.domElement);
 
     const geometry = new THREE.BoxGeometry(3, 3, 3);
     const materials = [
@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
   startBtn.addEventListener('click', () => {
     intro.style.display = 'none';
     gameInfo.style.display = 'block';
+    document.getElementById('game-container').style.display = 'block';
 
     init();               // inisialisasi scene dan cube
     generateQuestion();   // tampilkan soal
