@@ -44,10 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Draw circular label in center
-    ctx.beginPath();
+    /* ctx.beginPath();
     ctx.arc(canvas.width / 2, canvas.height / 2, 40, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-    ctx.fill();
+    ctx.fill(); */
 
     // Label text (A–F)
     ctx.fillStyle = '#000';
