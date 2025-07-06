@@ -1,3 +1,25 @@
+body {
+  margin: 0;
+  background: #111;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+canvas {
+  display: block;
+}
+.game-info {
+  position: absolute;
+  top: 20px;
+  text-align: center;
+  z-index: 10;
+}
+.game-info h2, .game-info p {
+  margin: 4px 0;
+}
+
 .intro-screen {
   position: absolute;
   top: 50%;
@@ -9,12 +31,12 @@
 
 .intro-screen h1 {
   font-size: 2.5em;
-  color: #fff;
+  color: #000;
 }
 
 .intro-screen p {
   font-size: 1.2em;
-  color: #ccc;
+  color: #000;
   margin-bottom: 20px;
 }
 
