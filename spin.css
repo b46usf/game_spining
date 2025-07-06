@@ -48,12 +48,12 @@
       border: 1px solid #555;
     }
 
-    .front  { transform: rotateY(  0deg) translateZ(45vmin); background: #ff6f61; }
-    .back   { transform: rotateY(180deg) translateZ(45vmin); background: #6ec6ff; }
-    .right  { transform: rotateY( 90deg) translateZ(45vmin); background: #81c784; }
-    .left   { transform: rotateY(-90deg) translateZ(45vmin); background: #ffeb3b; }
-    .top    { transform: rotateX( 90deg) translateZ(45vmin); background: #ba68c8; }
-    .bottom { transform: rotateX(-90deg) translateZ(45vmin); background: #ff9800; }
+    .front  { transform: rotateY(  0deg) translateZ(150px); background: #ff6f61; }
+    .back   { transform: rotateY(180deg) translateZ(150px); background: #6ec6ff; }
+    .right  { transform: rotateY( 90deg) translateZ(150px); background: #81c784; }
+    .left   { transform: rotateY(-90deg) translateZ(150px); background: #ffeb3b; }
+    .top    { transform: rotateX( 90deg) translateZ(150px); background: #ba68c8; }
+    .bottom { transform: rotateX(-90deg) translateZ(150px); background: #ff9800; }
 
     .front > div { background: #ff6f61; }
     .back > div { background: #6ec6ff; }
