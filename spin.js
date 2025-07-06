@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let scene, camera, renderer, cube;
   let level = 1;
-  let timeLeft = 600;
+  let timeLeft = 60;
   let interval;
 
   const faceLabels = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (level < 3) {
       level++;
       levelElement.textContent = level;
-      timeLeft = 600;
+      timeLeft = 60;
       generateQuestion();
       recreateCube(level);
       startTimer();
