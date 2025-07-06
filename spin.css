@@ -1,4 +1,4 @@
-body {
+    body {
       margin: 0;
       display: flex;
       flex-direction: column;
@@ -11,8 +11,10 @@ body {
     }
 
     .scene {
-      width: 300px;
-      height: 300px;
+      width: 90vmin;
+      height: 90vmin;
+      max-width: 400px;
+      max-height: 400px;
       perspective: 1000px;
       margin-bottom: 20px;
     }
@@ -41,17 +43,17 @@ body {
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 16px;
+      font-size: clamp(10px, 3vw, 16px);
       color: #fff;
       border: 1px solid #555;
     }
 
-    .front  { transform: rotateY(  0deg) translateZ(150px); background: #ff6f61; }
-    .back   { transform: rotateY(180deg) translateZ(150px); background: #6ec6ff; }
-    .right  { transform: rotateY( 90deg) translateZ(150px); background: #81c784; }
-    .left   { transform: rotateY(-90deg) translateZ(150px); background: #ffeb3b; }
-    .top    { transform: rotateX( 90deg) translateZ(150px); background: #ba68c8; }
-    .bottom { transform: rotateX(-90deg) translateZ(150px); background: #ff9800; }
+    .front  { transform: rotateY(  0deg) translateZ(45vmin); background: #ff6f61; }
+    .back   { transform: rotateY(180deg) translateZ(45vmin); background: #6ec6ff; }
+    .right  { transform: rotateY( 90deg) translateZ(45vmin); background: #81c784; }
+    .left   { transform: rotateY(-90deg) translateZ(45vmin); background: #ffeb3b; }
+    .top    { transform: rotateX( 90deg) translateZ(45vmin); background: #ba68c8; }
+    .bottom { transform: rotateX(-90deg) translateZ(45vmin); background: #ff9800; }
 
     .front > div { background: #ff6f61; }
     .back > div { background: #6ec6ff; }
@@ -65,14 +67,14 @@ body {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
+      width: clamp(20px, 8vw, 40px);
+      height: clamp(20px, 8vw, 40px);
       background: rgba(0,0,0,0.6);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: clamp(12px, 4vw, 20px);
       font-weight: bold;
       z-index: 2;
       pointer-events: none;
@@ -86,4 +88,13 @@ body {
     @keyframes spin {
       from { transform: rotateX(0deg) rotateY(0deg); }
       to { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    @media (max-width: 480px) {
+      .game-info h2 {
+        font-size: 18px;
+      }
+      .game-info p {
+        font-size: 14px;
+      }
     }
