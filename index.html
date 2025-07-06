@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinning Cube Math Game</title>
+  <link rel="stylesheet" href="spin.css">
+  <script src="spin.js" defer></script>
+</head>
+<body>
+  <audio id="levelSound" src="level-up.mp3"></audio>
+  <audio id="tickSound" src="clock-ticking.mp3"></audio>
+
+  <div class="game-info">
+    <h2>Level <span id="level">1</span></h2>
+    <p>Time: <span id="timer">60</span> sec</p>
+    <p id="question"></p>
+  </div>
+  <div class="scene">
+    <div class="cube">
+      <div class="face front"></div>
+      <div class="face back"></div>
+      <div class="face right"></div>
+      <div class="face left"></div>
+      <div class="face top"></div>
+      <div class="face bottom"></div>
+    </div>
+  </div>
+</body>
+</html>
