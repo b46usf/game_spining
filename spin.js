@@ -44,10 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Draw circular label in center
-    /* ctx.beginPath();
+
+    ctx.beginPath();
     ctx.arc(canvas.width / 2, canvas.height / 2, 40, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-    ctx.fill(); */
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
 
     // Label text (A–F)
     ctx.fillStyle = '#000';
@@ -134,12 +137,28 @@ document.addEventListener("DOMContentLoaded", () => {
       generateQuestion();
       recreateCube(level);
       startTimer();
-    } else {
+    }
+    else {
       questionElement.style.display = 'none';
-      document.body.innerHTML += `
-        <h1 style="font-size: 48px; color: #fff; margin-top: 20px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-          GAME OVER
-        </h1>`;
+      
+      const gameOverDiv = document.createElement('div');
+      gameOverDiv.style.position = 'absolute';
+      gameOverDiv.style.top = '50%';
+      gameOverDiv.style.left = '50%';
+      gameOverDiv.style.transform = 'translate(-50%, -50%)';
+      gameOverDiv.style.textAlign = 'center';
+      gameOverDiv.innerHTML = `
+        <h1 style="font-size: 48px; color: #fff; margin-bottom: 20px;">GAME OVER</h1>
+        <button id="restartBtn" style="padding: 12px 24px; font-size: 18px; border-radius: 8px; background-color: #00bcd4; color: white; border: none; cursor: pointer;">
+          Let's Start Play Again
+        </button>
+      `;
+      document.body.appendChild(gameOverDiv);
+
+      document.getElementById('restartBtn').addEventListener('click', () => {
+        document.body.removeChild(gameOverDiv);
+        startGame(); // Reset semua
+      });
     }
   }
 
@@ -155,6 +174,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
 
+  function startGame() {
+    level = 1;
+    timeLeft = 60;
+    levelElement.textContent = level;
+    questionElement.style.display = 'block';
+    generateQuestion();
+    recreateCube(level);
+    startTimer();
+  }
+
   window.addEventListener('resize', () => {
     if (!camera || !renderer) return;
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -168,7 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('game-container').style.display = 'block';
 
     init();
-    generateQuestion();
-    startTimer();
+    startGame();
   });
 });
