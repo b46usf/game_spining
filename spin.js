@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const levelSound = document.getElementById('levelSound');
   const tickSound = document.getElementById('tickSound');
 
+  const startBtn = document.getElementById('startBtn');
+  const intro = document.querySelector('.intro-screen');
+  const gameInfo = document.querySelector('.game-info');
+
   let level = 1;
   let timeLeft = 60;
   let interval;
@@ -71,6 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  startBtn.addEventListener('click', () => {
+    intro.style.display = 'none';
+    gameInfo.style.display = 'block';
+
+    init();               // inisialisasi scene dan cube
+    generateQuestion();   // tampilkan soal
+    startTimer();         // mulai timer
+  });
+  
   function startTimer() {
     tickSound.currentTime = 0;
     tickSound.play();
