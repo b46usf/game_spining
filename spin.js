@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let scene, camera, renderer, cube;
   let level = 1;
-  let timeLeft = 60;
+  let timeLeft = 600;
   let interval;
 
   const faceLabels = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -39,26 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.height = 256;
     const ctx = canvas.getContext('2d');
 
-    // Background color
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw circular label in center
     ctx.beginPath();
     ctx.arc(canvas.width / 2, canvas.height / 2, 20, 0, Math.PI * 2);
     ctx.strokeStyle = '#000';
     ctx.lineWidth = 2;
     ctx.stroke();
 
-
-    // Label text (A–F)
     ctx.fillStyle = '#000';
     ctx.font = 'bold 32px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(label, canvas.width / 2, canvas.height / 2);
 
-    // Draw grid numbers
     ctx.fillStyle = '#fff';
     ctx.font = '20px Arial';
     const gridSize = 4;
@@ -132,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (level < 3) {
       level++;
       levelElement.textContent = level;
-      timeLeft = 60;
+      timeLeft = 600;
       generateQuestion();
       recreateCube(level);
       startTimer();
@@ -156,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.getElementById('restartBtn').addEventListener('click', () => {
         document.body.removeChild(gameOverDiv);
-        startGame(); // Reset semua
+        startGame();
       });
     }
   }
@@ -166,7 +161,9 @@ document.addEventListener("DOMContentLoaded", () => {
     tickSound.play();
     interval = setInterval(() => {
       timeLeft--;
-      timerElement.textContent = timeLeft;
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
       if (timeLeft <= 0) {
         nextLevel();
       }
