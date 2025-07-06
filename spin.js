@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   let scene, camera, renderer, cube;
-  let rotX = 0, rotY = 0;
   let level = 1;
   let timeLeft = 60;
   let interval;
+
+  const faceLabels = ['A', 'B', 'C', 'D', 'E', 'F'];
+  const faceColors = ['#ff4d4f', '#52c41a', '#1890ff', '#fa8c16', '#722ed1', '#13c2c2'];
 
   const timerElement = document.getElementById('timer');
   const levelElement = document.getElementById('level');
@@ -19,29 +21,44 @@ document.addEventListener("DOMContentLoaded", () => {
     const numbers = [];
     for (let i = 0; i < 16; i++) {
       if (level === 1) {
-        numbers.push(Math.floor(Math.random() * 9) + 1); // 1–9
+        numbers.push(Math.floor(Math.random() * 9) + 1);
       } else if (level === 2) {
-        numbers.push(Math.floor(Math.random() * 90) + 10); // 10–99
+        numbers.push(Math.floor(Math.random() * 90) + 10);
       } else {
-        numbers.push(Math.floor(Math.random() * 99) + 1); // 1–99
+        const satuan = Math.floor(Math.random() * 9) + 1;
+        const puluhan = Math.floor(Math.random() * 90) + 10;
+        numbers.push(satuan * puluhan);
       }
     }
     return numbers;
   }
 
-  function generateFaceTexture(numbers) {
+  function generateFaceTexture(numbers, label, bgColor) {
     const canvas = document.createElement('canvas');
     canvas.width = 256;
     canvas.height = 256;
     const ctx = canvas.getContext('2d');
 
-    ctx.fillStyle = '#000';
+    // Background color
+    ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = '20px Arial';
-    ctx.fillStyle = '#fff';
+
+    // Draw circular label in center
+    ctx.beginPath();
+    ctx.arc(canvas.width / 2, canvas.height / 2, 40, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.fill();
+
+    // Label text (A–F)
+    ctx.fillStyle = '#000';
+    ctx.font = 'bold 32px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
+    ctx.fillText(label, canvas.width / 2, canvas.height / 2);
 
+    // Draw grid numbers
+    ctx.fillStyle = '#fff';
+    ctx.font = '20px Arial';
     const gridSize = 4;
     const cellSize = canvas.width / gridSize;
 
@@ -65,7 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let i = 0; i < 6; i++) {
       const nums = getNumbersForLevel(level);
-      materials.push(generateFaceTexture(nums));
+      const mat = generateFaceTexture(nums, faceLabels[i], faceColors[i]);
+      materials.push(mat);
     }
 
     cube = new THREE.Mesh(geometry, materials);
