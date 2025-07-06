@@ -41,7 +41,7 @@
     .face.active {
       box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
     }
-    
+
     .face > div {
       display: flex;
       align-items: center;
@@ -89,10 +89,10 @@
       margin-bottom: 10px;
     }
 
-    @keyframes spin {
+    /* @keyframes spin {
       from { transform: rotateX(0deg) rotateY(0deg); }
       to { transform: rotateX(360deg) rotateY(360deg); }
-    }
+    } */
 
     @media (max-width: 480px) {
       .game-info h2 {
